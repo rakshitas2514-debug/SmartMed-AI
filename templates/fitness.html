@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block title %}Fitness plans · SmartMed AI{% endblock %}
+{% block content %}
+<section class="visual-banner">
+  <img src="{{ url_for('static', filename='images/fitness-walking.jpg') }}" alt="Movement for every day" loading="lazy">
+  <div class="visual-banner-copy"><span class="eyebrow">SMARTMED AI</span><h2>Movement for every day</h2><p>Walking, stretching and beginner-friendly activity ideas.</p></div>
+</section>
+<section class="page-intro"><div class="eyebrow">FITNESS & MOVEMENT</div><h1>A plan that meets you where you are.</h1><p class="lead">Choose a goal and tell us your experience, available equipment and constraints.</p></section>
+<section class="panel"><form method="post" class="form-stack"><label>Fitness goal<select name="goal">{% for g in ["General fitness","Weight loss","Weight gain and strength","Yoga and flexibility","Walking and steps","Gym beginner","Home workout","Improve stamina"] %}<option {% if goal == g %}selected{% endif %}>{{ g }}</option>{% endfor %}</select></label><label>Tell us more<textarea name="details" rows="4" placeholder="Example: I am a beginner, have 20 minutes per day, and prefer home workouts.">{{ details }}</textarea></label><button class="button" type="submit">Create starter plan</button></form></section>
+{% if answer %}<section class="answer-panel"><div class="eyebrow">YOUR STARTER PLAN</div><h2>{{ goal }}</h2><div class="answer-text">{{ answer }}</div></section>{% endif %}
+{% if history %}<section class="section"><h2>Recent plans</h2><div class="history-list">{% for item in history %}<article class="history-card"><div class="history-meta">{{ item.created_at.strftime("%d %b %Y, %I:%M %p") }} · {{ item.goal }}</div><p>{{ item.details or "No extra details entered." }}</p><details><summary>View plan</summary><div class="answer-text">{{ item.answer }}</div></details></article>{% endfor %}</div></section>{% endif %}
+{% endblock %}

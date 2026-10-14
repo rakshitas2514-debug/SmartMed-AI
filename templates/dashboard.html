@@ -1,0 +1,23 @@
+{% extends "base.html" %}{% block title %}Dashboard · SmartMed AI{% endblock %}
+{% block content %}
+<section class="dashboard-hero">
+  <img src="{{ url_for('static', filename='images/hero-health.jpg') }}" alt="Digital healthcare and wellness" fetchpriority="high">
+  <div class="dashboard-hero-copy"><div class="eyebrow">YOUR WELLNESS JOURNEY</div><h1>Hello, {{ current_user.username }}.</h1><p class="lead">Small, consistent steps can help build healthy routines. What would you like to do today?</p></div>
+</section>
+<section class="page-intro dashboard-intro"><div class="eyebrow">YOUR SPACE</div><h2>Your health at a glance</h2></section>
+<section class="stats-grid">
+  <article class="stat-card"><span>HealthPoints</span><strong>{{ current_user.points }}</strong><a href="{{ url_for('rewards') }}">View rewards →</a></article>
+  <article class="stat-card"><span>Health questions</span><strong>{{ current_user.health_entries|length }}</strong><a href="{{ url_for('health') }}">Ask a question →</a></article>
+  <article class="stat-card"><span>Fitness plans</span><strong>{{ current_user.fitness_entries|length }}</strong><a href="{{ url_for('fitness') }}">Build a plan →</a></article>
+  <article class="stat-card"><span>Today's steps</span><strong>{{ today_log.steps if today_log else 0 }}</strong><a href="{{ url_for('tracker') }}">Update tracker →</a></article>
+</section>
+<section class="section"><div class="section-heading"><div class="eyebrow">QUICK ACTIONS</div><h2>Where do you want to start?</h2></div>
+<div class="feature-grid">
+<a class="feature-card feature-link" href="{{ url_for('health') }}"><img class="feature-photo" src="{{ url_for('static', filename='images/health-report.jpg') }}" alt="Health report and stethoscope" loading="lazy"><div class="feature-icon">✚</div><h3>Ask about health</h3><p>Enter a question in your own words.</p><span class="text-link">Open health assistant →</span></a>
+<a class="feature-card feature-link" href="{{ url_for('report') }}"><img class="feature-photo" src="{{ url_for('static', filename='images/health-report.jpg') }}" alt="Medical report" loading="lazy"><div class="feature-icon">▤</div><h3>Review a report</h3><p>Paste text or upload a supported file.</p><span class="text-link">Review report →</span></a>
+<a class="feature-card feature-link" href="{{ url_for('food') }}"><img class="feature-photo" src="{{ url_for('static', filename='images/food-nutrition.jpg') }}" alt="Balanced meal" loading="lazy"><div class="feature-icon">◉</div><h3>Get food ideas</h3><p>Describe foods you have and your goal.</p><span class="text-link">Get food guidance →</span></a>
+<a class="feature-card feature-link" href="{{ url_for('fitness') }}"><img class="feature-photo" src="{{ url_for('static', filename='images/fitness-walking.jpg') }}" alt="Walking and stretching" loading="lazy"><div class="feature-icon">↗</div><h3>Plan movement</h3><p>Choose walking, yoga, strength or another goal.</p><span class="text-link">Get a fitness plan →</span></a>
+<a class="feature-card feature-link" href="{{ url_for('care') }}"><img class="feature-photo" src="{{ url_for('static', filename='images/healthcare.jpg') }}" alt="Hospital building" loading="lazy"><div class="feature-icon">⌖</div><h3>Find care</h3><p>Search for nearby healthcare providers.</p><span class="text-link">Open care finder →</span></a>
+<a class="feature-card feature-link" href="{{ url_for('tracker') }}"><img class="feature-photo" src="{{ url_for('static', filename='images/progress.jpg') }}" alt="Fitness progress tracking" loading="lazy"><div class="feature-icon">✓</div><h3>Daily tracker</h3><p>Log water, sleep, steps and mood.</p><span class="text-link">Track today →</span></a>
+</div></section>
+{% endblock %}

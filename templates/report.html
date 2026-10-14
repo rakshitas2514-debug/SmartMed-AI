@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Report review · SmartMed AI{% endblock %}
+{% block content %}
+<section class="visual-banner">
+  <img src="{{ url_for('static', filename='images/health-report.jpg') }}" alt="Health report review" loading="lazy">
+  <div class="visual-banner-copy"><span class="eyebrow">SMARTMED AI</span><h2>Health report review</h2><p>Upload or paste readable report text for a simple text review.</p></div>
+</section>
+<section class="page-intro"><div class="eyebrow">HEALTH REPORTS</div><h1>Understand the text in your report.</h1><p class="lead">Paste report text or upload a text-based PDF, TXT or CSV file. The app extracts text and highlights simple name/value lines—it does not diagnose.</p></section>
+<section class="panel"><form method="post" enctype="multipart/form-data" class="form-stack"><label>Upload report file<input type="file" name="report_file" accept=".txt,.csv,.pdf"></label><div class="or-divider"><span>OR PASTE TEXT</span></div><label>Report text<textarea name="report_text" rows="7" placeholder="Paste the readable text from your report here. Remove your name, address and patient ID first."></textarea></label><button class="button" type="submit">Extract and review text</button></form><p class="helper">Maximum file size: 10 MB. Scanned-image PDFs need OCR, which is not included. Uploaded files stay in this local project's instance/uploads folder until you delete them.</p></section>
+{% if result %}<section class="answer-panel"><div class="eyebrow">TEXT REVIEW</div><h2>Extracted report review</h2><div class="answer-text">{{ result }}</div></section>{% endif %}
+{% endblock %}

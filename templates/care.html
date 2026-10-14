@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block title %}Find care · SmartMed AI{% endblock %}
+{% block content %}
+<section class="visual-banner">
+  <img src="{{ url_for('static', filename='images/healthcare.jpg') }}" alt="Find healthcare" loading="lazy">
+  <div class="visual-banner-copy"><span class="eyebrow">SMARTMED AI</span><h2>Find healthcare</h2><p>Explore hospitals, clinics and care services.</p></div>
+</section><section class="page-intro"><div class="eyebrow">FIND HEALTHCARE</div><h1>Find care near a place you choose.</h1><p class="lead">Enter a city, area or postcode and open a map search for doctors and hospitals.</p></section>
+<section class="panel"><form method="post" class="form-stack"><label>Location or search phrase<input name="query" value="{{ query }}" required placeholder="Example: Indiranagar, Bengaluru"></label><button class="button" type="submit">Search maps</button></form></section>
+{% if search_url %}<section class="answer-panel"><h2>Your map search is ready</h2><p>Search results are supplied by an external map service and are not verified or endorsed by SmartMed AI. Check qualifications, hours, fees and availability directly.</p><a class="button" href="{{ search_url }}" target="_blank" rel="noopener noreferrer">Open Google Maps results ↗</a></section>{% endif %}
+<section class="notice"><strong>Emergency?</strong> Do not wait for map search results. Call your local emergency number or go to the nearest emergency department.</section>{% endblock %}

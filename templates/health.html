@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Health assistant · SmartMed AI{% endblock %}
+{% block content %}
+<section class="visual-banner">
+  <img src="{{ url_for('static', filename='images/health-report.jpg') }}" alt="Health insights" loading="lazy">
+  <div class="visual-banner-copy"><span class="eyebrow">SMARTMED AI</span><h2>Health insights</h2><p>Understand general health information and questions.</p></div>
+</section>
+<section class="page-intro"><div class="eyebrow">HEALTH ASSISTANT</div><h1>What would you like to understand?</h1><p class="lead">Write naturally. You can include spelling mistakes; this offline version uses simple keyword matching and topic rules.</p></section>
+<section class="panel"><form method="post" class="form-stack"><label>Your health question<textarea name="question" rows="5" required placeholder="For example: I have had a headache since yesterday. What general steps might help?">{{ question }}</textarea></label><button class="button" type="submit">Get guidance</button></form><p class="helper">Do not enter your full name, address, passwords or other unnecessary identifying details.</p></section>
+{% if answer %}<section class="answer-panel"><div class="answer-top"><div><div class="eyebrow">OFFLINE RESPONSE</div><h2>General guidance</h2></div><span class="pill">Rule-based</span></div><div class="answer-text">{{ answer }}</div></section>{% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}{% block title %}SmartMed AI — Your Health Companion{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="eyebrow">YOUR EVERYDAY WELLNESS COMPANION</div>
+  <h1>Make healthier choices, <span>one step at a time.</span></h1>
+  <p class="lead">Ask general health questions, review readable report text, plan balanced meals, build movement habits and track your progress—all with a free offline assistant.</p>
+  <div class="actions"><a class="button" href="{{ url_for('register') }}">Get started free</a><a class="button secondary" href="{{ url_for('login') }}">Log in</a></div>
+  <div class="notice"><strong>Honest about its limits:</strong> this version uses local keyword and rule-based language processing, not a trained generative AI model. It does not send your questions to an AI API.</div>
+</section>
+<section class="section">
+  <div class="section-heading"><div class="eyebrow">EXPLORE SMARTMED</div><h2>Tools for your wellness journey</h2></div>
+  <div class="feature-grid">
+    {% for icon, title, desc in [
+      ("✚","Health assistant","General educational guidance and safety signposting."),
+      ("▤","Report text review","Paste text or extract text from TXT, CSV and supported PDFs."),
+      ("◉","Food guidance","Practical meal ideas from your ingredients and goals."),
+      ("↗","Fitness plans","Starter movement plans for walking, yoga, strength and weight goals."),
+      ("⌖","Find care","Open a map search for doctors and hospitals near a place you enter."),
+      ("★","Tracking & rewards","Record habits, review recent activity and earn participation points.")
+    ] %}
+    <article class="feature-card"><div class="feature-icon">{{ icon }}</div><h3>{{ title }}</h3><p>{{ desc }}</p></article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

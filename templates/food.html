@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Food guidance · SmartMed AI{% endblock %}
+{% block content %}
+<section class="visual-banner">
+  <img src="{{ url_for('static', filename='images/food-nutrition.jpg') }}" alt="Food & nutrition" loading="lazy">
+  <div class="visual-banner-copy"><span class="eyebrow">SMARTMED AI</span><h2>Food & nutrition</h2><p>Explore familiar foods and balanced meal ideas.</p></div>
+</section>
+<section class="page-intro"><div class="eyebrow">FOOD & NUTRITION</div><h1>Food guidance that starts with you.</h1><p class="lead">Describe ingredients, your goal, allergies and food preferences. The offline assistant will suggest a practical starting point.</p></section>
+<section class="panel"><form method="post" class="form-stack"><label>Your food or nutrition question<textarea name="question" rows="5" required placeholder="Example: I eat rice, sambar, boiled eggs and bananas. I want to gain weight. Suggest breakfast, lunch, dinner and snacks.">{{ question }}</textarea></label><button class="button" type="submit">Get food guidance</button></form><p class="helper">For allergies, pregnancy, diabetes, kidney disease or prescribed diets, get advice from a qualified clinician or dietitian.</p></section>
+{% if answer %}<section class="answer-panel"><div class="answer-top"><div><div class="eyebrow">YOUR SUGGESTION</div><h2>Food guidance</h2></div><span class="pill">Offline rules</span></div><div class="answer-text">{{ answer }}</div></section>{% endif %}
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block title %}HealthPoints · SmartMed AI{% endblock %}
+{% block content %}
+<section class="visual-banner">
+  <img src="{{ url_for('static', filename='images/rewards.jpg') }}" alt="Celebrate your effort" loading="lazy">
+  <div class="visual-banner-copy"><span class="eyebrow">SMARTMED AI</span><h2>Celebrate your effort</h2><p>View participation points and wellness milestones.</p></div>
+</section><section class="page-intro"><div class="eyebrow">MILESTONES</div><h1>Every small step counts.</h1><p class="lead">Points reward participation in this demo; they are not medical scores and have no cash value.</p></section>
+<section class="points-hero"><span>Total HealthPoints</span><strong>{{ points }}</strong><p>Keep logging helpful habits and exploring your wellness tools.</p></section>
+<section class="section"><h2>Your badges</h2><div class="badge-grid">{% if badges %}{% for icon, name, desc in badges %}<article class="badge-card"><div class="badge-icon">{{ icon }}</div><h3>{{ name }}</h3><p>{{ desc }}</p></article>{% endfor %}{% else %}<p class="empty">Your first badge is waiting. Use a SmartMed feature to earn points.</p>{% endif %}</div></section>
+<section class="section"><h2>Recent point activity</h2>{% if transactions %}<div class="history-list">{% for t in transactions %}<article class="history-card point-row"><div><strong>{{ t.reason }}</strong><div class="history-meta">{{ t.created_at.strftime("%d %b %Y, %I:%M %p") }}</div></div><strong class="points-plus">+{{ t.points }}</strong></article>{% endfor %}</div>{% else %}<p class="empty">No points activity yet.</p>{% endif %}</section>{% endblock %}
